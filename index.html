@@ -1,0 +1,68 @@
+<body>
+  <div id="root"></div>
+  <script>var exports = {};</script>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script src="./kataLonja.js"></script>
+  <script type="text/babel">
+
+    function KgForm() {
+
+      function handleSubmit(event) {
+        event.preventDefault()
+
+        alert(
+          datosMercancia(
+            event.target.kgVieira.value, 
+            event.target.kgPulpo.value, 
+            event.target.kgCentollo.value
+          )
+        )
+      }
+
+      function handleChange(event) {
+        setDatos(event.target.value.toLowerCase())
+      }
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="vieiraKg">Vieira KG:</label>
+            <input
+              id="vieiraKg"
+              type="text"
+              pattern="[0-9]*"
+              required="true"
+              name="kgVieira"
+            />
+          </div>
+          <div>
+            <label htmlFor="pulpoKg">Pulpo KG:</label>
+            <input
+              id="pulpoKg"
+              type="text"
+              pattern="[0-9]*"
+              required="true"
+              name="kgPulpo"
+            />
+          </div>
+          <div>
+            <label htmlFor="centolloKg">Centollo KG:</label>
+            <input
+              id="centolloKg"
+              type="text"
+              pattern="[0-9]*"
+              required="true"
+              name="kgCentollo"
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      )
+    }
+
+    ReactDOM.render(<KgForm />, document.getElementById('root'))
+
+  </script>
+</body>
